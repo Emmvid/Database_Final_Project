@@ -1,6 +1,7 @@
 ﻿using Database_Final_Project.Data;
 using Database_Final_Project.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Database_Final_Project.Services;
 
@@ -25,6 +26,18 @@ internal class StatusService
             }
           
         }
+    }
+
+    //För att hämta ut alla statusärenden
+    public async Task<IEnumerable<StatusEntity>> GetAllAsync()
+    {
+        return await _context.Statuses.ToListAsync();
+    }
+
+    public async Task<StatusEntity> GetAsync(Expression<Func<StatusEntity, bool>> predicate)
+    {
+        var _statusEntity = await _context.Statuses.FirstOrDefaultAsync(predicate);
+        return _statusEntity!;
     }
 
     

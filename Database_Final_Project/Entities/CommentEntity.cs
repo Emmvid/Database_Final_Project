@@ -10,7 +10,9 @@ internal class CommentEntity
 
 
 
-    //En complaint kan ha många kommentarer
+    //En complaint kan ha många kommentarer --> kopplad till ett ärende.
     public int ComplaintId { get; set; }
     public ComplaintEntity Complaint { get; set; } = null!;
+
+   
 }
