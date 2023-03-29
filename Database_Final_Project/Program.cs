@@ -6,4 +6,4 @@ StatusService statusService = new();
 await statusService.CreateStatusIfNotExistsAsync();
 
 MenuService menuService = new();
-await menuService.ShowSpecificComplaint();
+await menuService.Start();

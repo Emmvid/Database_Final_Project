@@ -36,6 +36,7 @@ internal class ComplaintService
         var _caseEntity = await _context.Complaints
             .Include(x => x.Customer)
             .Include(x => x.Status)
+            .Include(x => x.Comments)
             .FirstOrDefaultAsync(predicate);
         return _caseEntity!;
     }
