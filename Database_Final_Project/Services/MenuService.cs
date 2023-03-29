@@ -57,8 +57,8 @@ internal class MenuService
 
         if (answer == "ja")
         {
-            Console.Clear();
             again = true;
+            Console.Clear();
         }
 
         return again;
@@ -108,7 +108,7 @@ internal class MenuService
 
         while (string.IsNullOrEmpty(complaint))
         {
-            Console.Write("Skriv in ditt klagomål");
+            Console.Write("Skriv in ditt klagomål: ");
             complaint = Console.ReadLine() ?? "";
         }
 
@@ -183,6 +183,7 @@ internal class MenuService
     }
     private async Task ShowAllComplaints()
     {
+        Console.Clear();
         foreach (var complaint in await _complaintService.GetAllAsync())
         {
             {
