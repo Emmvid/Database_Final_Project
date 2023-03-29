@@ -65,6 +65,9 @@ namespace Database_Final_Project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("StatusId")
                         .HasColumnType("int");
 

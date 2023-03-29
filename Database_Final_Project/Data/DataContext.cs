@@ -24,10 +24,9 @@ namespace Database_Final_Project.Data
         {
             base.OnModelCreating(modelBuilder);
         }
-
+        public DbSet<ComplaintEntity> Complaints { get; set; } = null!;
         public DbSet<CommentEntity> Comments { get; set; } = null!;
         public DbSet<CustomerEntity> Customers { get; set; } = null!;
-        public DbSet<ComplaintEntity> Complaints { get; set; } = null!;
         public DbSet<StatusEntity> Statuses { get; set; } = null!;
     }
 }

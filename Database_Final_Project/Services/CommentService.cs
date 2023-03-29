@@ -9,6 +9,7 @@ internal class CommentService
 {
     private readonly DataContext _context = new();
 
+    //skapa en kommentar
     public async Task CreateAsync(CommentEntity commentEntity)
     {
         if (await _context.Complaints.AnyAsync(x => x.Id == commentEntity.ComplaintId))
@@ -16,6 +17,11 @@ internal class CommentService
             _context.Add(commentEntity);
             await _context.SaveChangesAsync();
         }
+    }
+    //Hämta alla kommentarer
+    public async Task<IEnumerable<CommentEntity>> GetAllAsync()
+    {
+        return await _context.Comments.ToListAsync();
     }
 
   
