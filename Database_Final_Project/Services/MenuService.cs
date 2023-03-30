@@ -185,7 +185,7 @@ internal class MenuService
     {
         foreach (var complaint in await _complaintService.GetAllAsync())
         {
-            {
+            
                 Console.WriteLine($"");
                 Console.WriteLine($"Namn: {complaint.Customer.FirstName} {complaint.Customer.LastName}");
                 Console.WriteLine($"E-postadress: {complaint.Customer.Email}");
@@ -205,7 +205,7 @@ internal class MenuService
                 Console.WriteLine($"Ändrad: {complaint.Modified}");
                 Console.WriteLine($"Status: {complaint.Status.StatusName}");
                 Console.WriteLine("");
-            }
+            
         }
     }
 
@@ -254,7 +254,6 @@ internal class MenuService
         Console.WriteLine("Skriv in ditt telefonnummer: ");
         var phone = Console.ReadLine();
 
-
         var customer = new CustomerEntity
         {
             FirstName = firstName,
@@ -266,7 +265,6 @@ internal class MenuService
         await _customerService.CreateCustomerAsync(customer);
 
         var addedCustomer = await _customerService.GetAsync(x => x.Email == email);
-
 
         Console.WriteLine("Du har nu blivit tillagd som kund, med denna information:  ");
         Console.WriteLine($"Namn: {addedCustomer.FirstName} {addedCustomer.LastName}");

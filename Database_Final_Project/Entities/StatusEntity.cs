@@ -3,9 +3,8 @@
 internal class StatusEntity
 {
     public int Id { get; set; }
-
     public string StatusName { get; set; } = null!;
 
     //varje status kan kopplas till olika complaints
-    public ICollection<ComplaintEntity> Complaints { get; set;} = new List<ComplaintEntity>();
+    public ICollection<ComplaintEntity> Complaints { get; set; } = new List<ComplaintEntity>();
 }
