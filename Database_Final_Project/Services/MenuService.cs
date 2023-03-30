@@ -7,7 +7,6 @@ internal class MenuService
     private readonly ComplaintService _complaintService = new();
     private readonly CustomerService _customerService = new();
     private readonly CommentService _commentService = new();
-
     public async Task Start()
     {
         string option;
@@ -60,10 +59,8 @@ internal class MenuService
             again = true;
             Console.Clear();
         }
-
         return again;
     }
-
 
     private async Task CreateComplaintAsync()
     {
@@ -83,7 +80,6 @@ internal class MenuService
             }
             else if (menuChoice == 2)
             {
-
                 Console.WriteLine("Skriv in den email du registrerade dig med");
                 var email = Console.ReadLine();
                 var alreadyAddedCustomer = await _customerService.GetAsync(x => x.Email == email);
@@ -138,14 +134,12 @@ internal class MenuService
             comment = Console.ReadLine() ?? "";
         }
 
-
         var commentEntity = new CommentEntity
         {
             ComplaintId = complaintId,
             Comment = comment,
             Created = DateTime.Now,
         };
-
         await _commentService.CreateAsync(commentEntity);
 
         Console.WriteLine("Din kommentar har nu skapats.");
@@ -176,7 +170,6 @@ internal class MenuService
             Console.WriteLine($"Status: {complaint.Status.StatusName}");
             Console.WriteLine($"Skapad: {complaint.Created}");
             Console.WriteLine($"Ändrad: {complaint.Modified}");
-
             Console.WriteLine("");
         }
         else { Console.WriteLine($"Klagomål med id: {Id} hittades inte. "); }
@@ -185,7 +178,6 @@ internal class MenuService
     {
         foreach (var complaint in await _complaintService.GetAllAsync())
         {
-            
                 Console.WriteLine($"");
                 Console.WriteLine($"Namn: {complaint.Customer.FirstName} {complaint.Customer.LastName}");
                 Console.WriteLine($"E-postadress: {complaint.Customer.Email}");
@@ -205,7 +197,6 @@ internal class MenuService
                 Console.WriteLine($"Ändrad: {complaint.Modified}");
                 Console.WriteLine($"Status: {complaint.Status.StatusName}");
                 Console.WriteLine("");
-            
         }
     }
 
