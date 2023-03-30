@@ -102,7 +102,7 @@ internal class MenuService
         }
         else
         {
-            Console.WriteLine("Du har inte skrivit en siffra. Var snäll och välj ett eller 2.");
+            Console.WriteLine("Du har inte skrivit en siffra. Var snäll och välj 1 eller 2.");
             return;
         }
 
@@ -134,7 +134,7 @@ internal class MenuService
 
         while (string.IsNullOrEmpty(comment))
         {
-            Console.WriteLine("Skriv din kommentar här: ");
+            Console.Write("Skriv din kommentar här: ");
             comment = Console.ReadLine() ?? "";
         }
 
@@ -170,7 +170,7 @@ internal class MenuService
             Console.WriteLine("Kommentarer:");
             foreach (var comment in complaint.Comments)
             {
-                Console.WriteLine(comment.Comment);
+                Console.WriteLine($"Kommentar: {comment.Comment}");
                 Console.WriteLine($"Kommentar skapad: {comment.Created}");
             }
             Console.WriteLine($"Status: {complaint.Status.StatusName}");
@@ -183,7 +183,6 @@ internal class MenuService
     }
     private async Task ShowAllComplaints()
     {
-        Console.Clear();
         foreach (var complaint in await _complaintService.GetAllAsync())
         {
             {
@@ -198,7 +197,7 @@ internal class MenuService
                     Console.WriteLine("Kommentarer:");
                     foreach (var comment in complaint.Comments)
                     {
-                        Console.WriteLine(comment.Comment);
+                        Console.WriteLine($"Kommentar: {comment.Comment}");
                         Console.WriteLine($"Skapad: {comment.Created}");
                     }
                 }
