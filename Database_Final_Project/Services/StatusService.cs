@@ -11,16 +11,16 @@ internal class StatusService
 
     public async Task CreateStatusIfNotExistsAsync()
     {
-        if(!await _context.Statuses.AnyAsync())
+        if (!await _context.Statuses.AnyAsync())
         {
-            string[] _statuses = new string[] {"Ej påbörjad", "Pågående", "Avslutad"};
+            string[] _statuses = new string[] { "Ej påbörjad", "Pågående", "Avslutad" };
 
-            foreach(var status in _statuses)
+            foreach (var status in _statuses)
             {
                 await _context.AddAsync(new StatusEntity { StatusName = status });
                 await _context.SaveChangesAsync();
             }
-          
+
         }
     }
 
@@ -30,5 +30,5 @@ internal class StatusService
         return _statusEntity!;
     }
 
-    
+
 }

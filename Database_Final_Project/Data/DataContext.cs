@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Database_Final_Project.Data
 {
-    internal class DataContext :DbContext
+    internal class DataContext : DbContext
     {
         public DataContext()
         {
@@ -12,7 +12,7 @@ namespace Database_Final_Project.Data
 
         public DataContext(DbContextOptions options) : base(options)
         {
-           
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

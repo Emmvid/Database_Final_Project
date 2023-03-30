@@ -1,7 +1,7 @@
 ﻿using Database_Final_Project.Data;
 using Database_Final_Project.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+
 using System.Linq.Expressions;
 
 namespace Database_Final_Project.Services;
@@ -12,7 +12,6 @@ internal class ComplaintService
     private readonly CustomerService _customerService = new CustomerService();
     private readonly StatusService _statusService = new StatusService();
 
-    //skapa ärende, men jag måste kolla för nu behöver det finnas en kund först??
     public async Task CreateAsync(ComplaintEntity complaintEntity)
     {
         if (await _customerService.GetAsync(customerEntity => customerEntity.Id == complaintEntity.CustomerId) != null

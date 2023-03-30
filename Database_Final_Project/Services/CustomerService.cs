@@ -9,25 +9,22 @@ internal class CustomerService
 {
     private readonly DataContext _context = new();
 
-    //För att skapa en kund
     public async Task<CustomerEntity> CreateCustomerAsync(CustomerEntity customerEntity)
     {
-        
-        var _customerEntity = await GetAsync( x => x.Email == customerEntity.Email);
+        var _customerEntity = await GetAsync(x => x.Email == customerEntity.Email);
+
         if (_customerEntity == null)
         {
             _customerEntity = customerEntity;
             _context.Add(_customerEntity);
-            await _context.SaveChangesAsync();   
+            await _context.SaveChangesAsync();
         }
         return _customerEntity;
     }
 
-    //Hämta alla kunder. Behöver ha en IEnumerable för att skapa listan
-    public async Task<IEnumerable<CustomerEntity>> GetAllAsync() 
+    public async Task<IEnumerable<CustomerEntity>> GetAllAsync()
     {
         return await _context.Customers.ToListAsync();
-
     }
 
     public async Task<CustomerEntity> GetAsync(Expression<Func<CustomerEntity, bool>> predicate)
